@@ -16,7 +16,7 @@ app.add_middleware(
 )
 
 # http
-couch = couchdb.Server("http://admin:123@couchdb-on-render-p6w8.onrender.com")
+couch = couchdb.Server("http://admin:123@couchdb-on-render-p6w8.onrender.com/")
 db_name ="produtos"
 
 # se o db name estiver em server entao atribui em db caminho couch[db_name]
