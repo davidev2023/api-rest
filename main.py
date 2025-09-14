@@ -2,8 +2,19 @@ from fastapi import FastAPI
 from models import Produto
 import couchdb
 
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# Configurar CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # libera para qualquer origem (pode restringir depois)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 couch = couchdb.Server("https://admin:123@couchdb-on-render-p6w8.onrender.com")
 db_name ="produtos"
