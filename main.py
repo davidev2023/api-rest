@@ -38,6 +38,12 @@ async def listar_produtos():
 @app.post("/produtos")
 async def criar_produto(produto: Produto):
     
+    for doc_id in db:
+        doc = db[doc_id]
+        if doc.get("nome") == produto.nome:
+            return {"erro": f"O produto '{produto.nome}' já existe!"}
+
+
     id_do_documento, revisao = db.save(produto.dict())
 
     return {
